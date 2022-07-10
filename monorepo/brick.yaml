@@ -1,0 +1,21 @@
+name: monorepo
+description: An opinionated brick to create Dart/Flutter monorepos managed with Melos.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+vars:
+  name:
+    type: string
+    description: Name of the monorepo.
+    prompt: What is the name of monorepo?
+  slug:
+    type: string
+    description: Slug of the monorepo.
+    prompt: What is the slug of monorepo?
+  repo-url:
+    type: string
+    description: URL of GitHub repository of the monorepo.
+    prompt: What is the URL of GitHub repository of the monorepo?

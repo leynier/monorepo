@@ -1,0 +1,126 @@
+name: "{{slug.snakeCase()}}"
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  gen:dart:
+    run: melos exec -c 1 -- dart run build_runner build
+    select-package:
+      depends-on: build_runner
+      flutter: false
+
+  gen:dart:all:
+    run: melos exec -c 1 -- dart run build_runner build --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: false
+
+  gen:flutter:
+    run: melos exec -c 1 -- flutter pub run build_runner build
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:flutter:all:
+    run: melos exec -c 1 -- flutter pub run build_runner build --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:
+    run: melos exec -c 1 -- flutter pub run build_runner build
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:all:
+    run: melos exec -c 1 -- flutter pub run build_runner build --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:dart:watch:
+    run: melos exec -c 1 -- dart run build_runner watch
+    select-package:
+      depends-on: build_runner
+      flutter: false
+
+  gen:dart:all:watch:
+    run: melos exec -c 1 -- dart run build_runner watch --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: false
+
+  gen:flutter:watch:
+    run: melos exec -c 1 -- flutter pub run build_runner watch
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:flutter:all:watch:
+    run: melos exec -c 1 -- flutter pub run build_runner watch --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:watch:
+    run: melos exec -c 1 -- flutter pub run build_runner watch
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  gen:all:watch:
+    run: melos exec -c 1 -- flutter pub run build_runner watch --delete-conflicting-outputs
+    select-package:
+      depends-on: build_runner
+      flutter: true
+
+  sync:
+    run: melos exec -c 1 -- lockpick sync ./
+    select-package: {}
+
+  format:dart:
+    run: melos exec -- dart format .
+    select-package:
+      flutter: false
+
+  format:flutter:
+    run: melos exec -- flutter format .
+    select-package:
+      flutter: true
+
+  fix:
+    run: melos exec -- dart fix --apply
+    select-package: {}
+
+  test:format:dart:
+    run: melos exec -- dart format --set-exit-if-changed .
+    select-package:
+      flutter: false
+
+  test:format:flutter:
+    run: melos exec -- flutter format --set-exit-if-changed .
+    select-package:
+      flutter: true
+
+  test:analyze:dart:
+    run: melos exec -- dart analyze
+    select-package:
+      flutter: false
+
+  test:analyze:flutter:
+    run: melos exec -- flutter analyze
+    select-package:
+      flutter: true
+
+  test:only:
+    run: melos exec -c 1 -- flutter test --coverage
+    select-package:
+      dir-exists: test
+
+command:
+  bootstrap:
+    runPubGetInParallel: false
+    usePubspecOverrides: true
