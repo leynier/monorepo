@@ -120,6 +120,10 @@ scripts:
     select-package:
       dir-exists: test
 
+  clean:
+    run: melos exec -c 1 -- flutter clean
+    select-package: {}
+
 command:
   bootstrap:
     runPubGetInParallel: false
