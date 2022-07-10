@@ -1,3 +1,7 @@
 bricks:
   monorepo:
     path: monorepo
+  dart_pkg:
+    path: dart_pkg
+  flutter_pkg:
+    path: flutter_pkg

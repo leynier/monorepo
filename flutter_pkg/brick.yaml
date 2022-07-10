@@ -1,0 +1,17 @@
+name: flutter_pkg
+description: An opinionated brick to create Flutter packages into monorepos managed with Melos.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+vars:
+  name:
+    type: string
+    description: Name of the package.
+    prompt: What is the name of package?
+  description:
+    type: string
+    description: Description of the package.
+    prompt: What is the description of package?

@@ -1,0 +1,17 @@
+name: "{{name.snakeCase()}}"
+description: "{{{description}}}"
+version: 0.0.1
+
+publish_to: "none"
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^1.8.2
