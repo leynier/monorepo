@@ -120,7 +120,7 @@ scripts:
     select-package:
       dir-exists: test
 
-  clean:
+  flutter_clean:
     run: melos exec -c 1 -- flutter clean
     select-package: {}
 
