@@ -81,29 +81,17 @@ scripts:
     run: melos exec -c 1 -- lockpick sync ./
     select-package: {}
 
-  format:dart:
+  format:
     run: melos exec -- dart format .
-    select-package:
-      flutter: false
-
-  format:flutter:
-    run: melos exec -- flutter format .
-    select-package:
-      flutter: true
+    select-package: {}
 
   fix:
     run: melos exec -- dart fix --apply
     select-package: {}
 
-  test:format:dart:
+  test:format:
     run: melos exec -- dart format --set-exit-if-changed .
-    select-package:
-      flutter: false
-
-  test:format:flutter:
-    run: melos exec -- flutter format --set-exit-if-changed .
-    select-package:
-      flutter: true
+    select-package: {}
 
   test:analyze:dart:
     run: melos exec -- dart analyze
@@ -121,8 +109,14 @@ scripts:
       dir-exists: test
 
   flutter_clean:
-    run: melos exec -c 1 -- flutter clean
+    run: melos exec -- flutter clean
     select-package: {}
+
+  l10n:
+    run: melos exec -- flutter gen-l10n
+    select-package:
+      depends-on: intl
+      flutter: true
 
 command:
   bootstrap:
