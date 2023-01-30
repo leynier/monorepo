@@ -13,8 +13,7 @@ jobs:
           cache: true
       - run: dart pub global activate melos
       - run: melos bs
-      - run: melos run test:format:dart
-      - run: melos run test:format:flutter
-      - run: melos run test:analyze:dart
-      - run: melos run test:analyze:flutter
-      - run: melos run test:only
+      - run: melos run test:format --no-select
+      - run: melos run test:analyze:dart --no-select
+      - run: melos run test:analyze:flutter --no-select
+      - run: melos run test:only --no-select
